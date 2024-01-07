@@ -14,6 +14,7 @@ RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o /short-url
 FROM scratch
 
 COPY --from=builder /short-url/short-url /short-url
+COPY --from=builder /app/.env /.env
 
 EXPOSE 8080
 
